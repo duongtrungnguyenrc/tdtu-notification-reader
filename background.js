@@ -1,0 +1,8 @@
+/**
+ * @copyright (c) 2025 Đường Trung Nguyên
+ * @license MIT
+ * @author Đường Trung Nguyên
+ * @link https://github.com/duongtrungnguyenrc
+ */
+
+async function fetchAllNotifications(){const{username:t,password:e}=await chrome.storage.local.get(["username","password"]);if(t&&e)try{console.log("Fetching all notifications...");const t=await fetch("https://stdportal.tdtu.edu.vn/home/LayThongBaoMoiSinhVien",{method:"POST",credentials:"include"}),e=await fetch("https://stdportal.tdtu.edu.vn/home/LayThongBaoQuanTrongSinhVien",{method:"POST",credentials:"include"}),o=await t.json(),a=await e.json();await chrome.storage.local.set({notifications:o,importantNotifications:a}),console.log("Dữ liệu cập nhật!",{dataNormal:o,dataImportant:a})}catch(t){console.error("Lỗi khi fetch dữ liệu:",t)}}chrome.runtime.onInstalled.addListener((()=>{console.log("Extension installed!"),chrome.alarms.create("fetchData",{periodInMinutes:5})})),chrome.alarms.onAlarm.addListener((t=>{"fetchData"===t.name&&fetchAllNotifications()})),chrome.runtime.onMessage.addListener(((t,e,o)=>{if("fetchData"===t.action)return fetchAllNotifications().then((()=>o({success:!0}))),!0})),chrome.runtime.onMessage.addListener(((t,e,o)=>{"openNotification"===t.action&&(chrome.cookies.getAll({domain:"stdportal.tdtu.edu.vn"},(e=>{const o=e.map((t=>`${t.name}=${t.value}`)).join("; ");chrome.tabs.create({url:t.url},(t=>{chrome.scripting.executeScript({target:{tabId:t.id},func:t=>{document.cookie=t},args:[o]})}))})),o({status:"done"}))}));

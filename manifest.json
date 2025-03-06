@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "TDTU Notifier",
+    "version": "1.0",
+    "description": "Tự động lấy thông báo sinh viên từ cổng TDTU.",
+    "permissions": ["storage", "alarms", "cookies", "activeTab", "scripting"],
+    "host_permissions": ["https://stdportal.tdtu.edu.vn/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  

@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>TDTU Notifier</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <section id="auth">
+      <input type="text" id="username" placeholder="MSSV">
+      <input type="password" id="password" placeholder="Mật khẩu">
+      <button id="login">Đăng nhập</button>
+    </section>
+
+    <main id="content">
+      <section class="control">
+        <h2>📢 TDTU Notifier</h2> 
+      
+        <div class="tabs">
+          <button class="tab-button active" data-tab="normal">🔔 Thông báo</button>
+          <button class="tab-button" data-tab="important">⚠️ Quan trọng</button>
+        </div>
+      
+        <button id="reload">🔄 Reload dữ liệu</button>
+      </section>
+    
+      <section id="tab-content">
+        <div id="normal" class="tab-panel active">
+          <h3>🔔 Thông báo thường</h3>
+          <div class="notifications-content" id="notifications">Chưa có thông báo nào.</div>
+        </div>
+        
+        <div id="important" class="tab-panel">
+          <h3>⚠️ Thông báo quan trọng</h3>
+          <div class="notifications-content" id="important-notifications">Chưa có thông báo nào.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" style="text-align: center; font-size: 12px; margin-top: 10px;">
+      © 2025 Duong Trung Nguyen. All rights reserved.
+    </footer>    
+  
+    <script src="popup.js"></script>
+  </body>  
+</html>

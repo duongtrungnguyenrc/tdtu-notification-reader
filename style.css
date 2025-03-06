@@ -1,0 +1,134 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --important-color: red;
+  --background-light: #f1f1f1;
+  --text-color: #000;
+  --font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  width: 300px;
+  padding: 10px;
+  color: var(--text-color);
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+}
+
+input {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+button:hover, button:focus {
+  background: var(--primary-hover);
+}
+
+#content {
+  display: none;
+  position: relative;
+}
+
+body.ready > #content {
+  display: block !important;
+}
+
+body.ready > #auth {
+  display: none;
+}
+
+.control {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.tabs {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  background: #ddd;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.tab-button:hover {
+  background: #bbb;
+}
+
+.tab-button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+
+.tab-panel {
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.notifications-content {
+  overflow-y: scroll;
+}
+
+.notification {
+  background: var(--background-light);
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 5px solid var(--primary-color);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.notification:hover {
+  background: #e1e1e1;
+}
+
+.important {
+  border-left-color: var(--important-color);
+}
